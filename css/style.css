@@ -3,21 +3,21 @@
 	height: 250px;
 	margin: 10px;
 	cursor: pointer;
-	object-fit: contain; /* Ensures images fit within their containers */
+	object-fit: contain; 
 }
 
 #image-container {
-	display: flex; /* Displays images horizontally */
-	justify-content: center; /* Centers images horizontally */
-	align-items: center; /* Centers images vertically */
-	flex-wrap: wrap; /* Allows images to wrap to the next line if necessary */
-	max-width: 1000px; /* Limits width of container to prevent horizontal scrolling */
-	margin: 0 auto; /* Centers container horizontally */
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+	flex-wrap: wrap; 
+	max-width: 1000px; 
+	margin: 0 auto; 
 }
 
 #results-container {
-	max-width: 1000px; /* Limits width of container to prevent horizontal scrolling */
-	margin: 20px auto; /* Centers container horizontally and adds margin */
+	max-width: 1000px; 
+	margin: 20px auto; 
     padding: 20px auto;
 }
 
