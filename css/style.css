@@ -1,5 +1,28 @@
-#vote-tracker {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+.product-image {
+	width: 30%;
+	height: 250px;
+	margin: 10px;
+	cursor: pointer;
+	object-fit: contain; /* Ensures images fit within their containers */
+}
+
+#image-container {
+	display: flex; /* Displays images horizontally */
+	justify-content: center; /* Centers images horizontally */
+	align-items: center; /* Centers images vertically */
+	flex-wrap: wrap; /* Allows images to wrap to the next line if necessary */
+	max-width: 1000px; /* Limits width of container to prevent horizontal scrolling */
+	margin: 0 auto; /* Centers container horizontally */
+}
+
+#results-container {
+	max-width: 1000px; /* Limits width of container to prevent horizontal scrolling */
+	margin: 20px auto; /* Centers container horizontally and adds margin */
+    padding: 20px auto;
+}
+
+button {
+    border-style: none;
+    padding: 10px;
+    margin: 20px auto;
 }
