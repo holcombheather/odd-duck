@@ -1,4 +1,8 @@
 // Constructor function to create product objects
+let numRounds = 25;
+let currentRound = 0;
+let activeProducts = [];
+
 function Product(name, imagePath) {
   this.name = name;
   this.imagePath = imagePath;
@@ -42,10 +46,12 @@ function generateImages() {
     product3 = products[Math.floor(Math.random() * products.length)];
   }
 
+
   // Update timesShown property for each product
   product1.timesShown++;
   product2.timesShown++;
   product3.timesShown++;
+  let activeProducts = [product1, product2, product3];
 
   // Display images on the page
   document.getElementById('product1').src = product1.imagePath;
@@ -53,17 +59,24 @@ function generateImages() {
   document.getElementById('product3').src = product3.imagePath;
 }
 
+
 // Add event listener to image container
-document.getElementById('image-container').addEventListener('click', handleImageClick);
+// document.getElementById('image-container').addEventListener('click', handleImageClick);
+// document.getElementById('image-container').addEventListener('click', function(event) {
+//   if (event.target.classList.contains('product-image')) {
+//     generateImages();
+//   }
+// });
+
 
 // Initial image generation
 generateImages();
 
 // Number of voting rounds
-let numRounds = 25;
+
 
 // Array of products currently being considered
-let activeProducts = [];
+
 
 function handleImageClick(event) {
   if (event.target.classList.contains('product-image')) {
@@ -74,6 +87,26 @@ function handleImageClick(event) {
     clickedProduct.timesClicked++;
   }
 }
+
+
+
+document.getElementById('image-container').addEventListener('click', function(event) {
+  if (event.target.classList.contains('product-image') && currentRound < numRounds) {
+    handleImageClick(event);
+    generateImages();
+    currentRound++;
+
+    if (currentRound === numRounds) {
+      // Voting has ended, you can perform any post-voting actions here.
+      // For example, remove the event listener or display a message.
+      console.log("You have exceeded the number of votes allowed.");
+    }
+  }
+});
+
+
+
+
 
 
 

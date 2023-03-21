@@ -1,4 +1,4 @@
-// validated with first user story
+// validated functionality for first user story
 
 // Constructor function to create product objects
 function Product(name, imagePath) {
@@ -9,25 +9,25 @@ function Product(name, imagePath) {
 
 // Array of product objects
 let products = [
-  new Product('Product 1', 'img/bag.jpg'),
-  new Product('Product 2', 'img/banana.jpg'),
-  new Product('Product 3', 'img/bathroom.jpg'),
-  new Product('Product 4', 'img/boots.jpg'),
-  new Product('Product 5', 'img/breakfast.jpg'),
-  new Product('Product 6', 'img/bubblegum.jpg'),
-  new Product('Product 7', 'img/chair.jpg'),
-  new Product('Product 8', 'img/cthulhu.jpg'),
-  new Product('Product 9', 'img/dog-duck.jpg'),
-  new Product('Product 10', 'img/dragon.jpg'),
-  new Product('Product 11', 'img/pen.jpg'),
-  new Product('Product 12', 'img/pet-sweep.jpg'),
-  new Product('Product 12', 'img/scissors.jpg'),
-  new Product('Product 12', 'img/shark.jpg'),
-  new Product('Product 12', 'img/sweep.png'),
-  new Product('Product 12', 'img/tauntaun.jpg'),
-  new Product('Product 12', 'img/unicorn.jpg'),
-  new Product('Product 12', 'img/water-can.jpg'),
-  new Product('Product 12', 'img/wine-glass.jpg'),
+  new Product('bag', 'img/bag.jpg'),
+  new Product('banana', 'img/banana.jpg'),
+  new Product('bathroom', 'img/bathroom.jpg'),
+  new Product('boots', 'img/boots.jpg'),
+  new Product('breakfast', 'img/breakfast.jpg'),
+  new Product('bubblegum', 'img/bubblegum.jpg'),
+  new Product('chair', 'img/chair.jpg'),
+  new Product('cthulhu', 'img/cthulhu.jpg'),
+  new Product('dog-duck', 'img/dog-duck.jpg'),
+  new Product('dragon', 'img/dragon.jpg'),
+  new Product('pen', 'img/pen.jpg'),
+  new Product('pet-sweep', 'img/pet-sweep.jpg'),
+  new Product('scissors', 'img/scissors.jpg'),
+  new Product('shark', 'img/shark.jpg'),
+  new Product('sweep', 'img/sweep.png'),
+  new Product('tauntaun', 'img/tauntaun.jpg'),
+  new Product('unicorn', 'img/unicorn.jpg'),
+  new Product('water-can', 'img/water-can.jpg'),
+  new Product('wine-glass', 'img/wine-glass.jpg')
 ];
 
 // Function to generate three unique product images
