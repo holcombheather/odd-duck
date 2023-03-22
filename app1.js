@@ -2,6 +2,8 @@ const state = []; //why do we call it state?
 let roundsOfVoting = 25;
 const activeButton = document.getElementById('viewResultsButton');
 
+let previousProducts = [];
+
 function Product(name, source) {
   this.name = name;
   this.source = source;
@@ -34,7 +36,7 @@ let imgEls = document.querySelectorAll('img');
 let voteTrackerEl = document.getElementById('vote-tracker');
 
 
-console.log('Currently rendered images', imgEls);
+// console.log('Currently rendered images', imgEls);
 
 console.log('Current State', state);
 
@@ -47,17 +49,21 @@ function generateRandom() {
 }
 
 function generateImages() {
-  let product1 = state[generateRandom()];
-  let product2 = state[generateRandom()];
-  let product3 = state[generateRandom()];
-  console.log('Images to re-render', imgEls, product1, product2, product3);
-
-  // Check if products are unique and generate new ones if necessary
-  while (product1 === product2 || product1 === product3 || product2 === product3) {
+  let product1, product2, product3;
+  do {
     product1 = state[generateRandom()];
     product2 = state[generateRandom()];
     product3 = state[generateRandom()];
-  }
+  } while (
+    previousProducts.includes(product1) ||
+    previousProducts.includes(product2) ||
+    previousProducts.includes(product3) ||
+    product1 === product2 ||
+    product1 === product3 ||
+    product2 === product3
+  );
+
+  previousProducts = [product1, product2, product3];
 
   imgEls[0].src = product1.source;
   imgEls[0].id = product1.name;
@@ -99,15 +105,13 @@ voteTrackerEl.addEventListener('click', handleImageClick);
 
 
 function generateResults(event) {
+  // eslint-disable-next-line no-unused-vars
   let buttonClicked = event.target.id;
   state.forEach(product => {
     let listItemEl = document.createElement('li');
     let resultContainer = document.getElementById('results-list');
     resultContainer.appendChild(listItemEl);
     listItemEl.innerHTML = `${product.name} had ${product.timesClicked} votes, and was seen ${product.timesShown} times.`;
-    product.timesClicked;
-    product.timesShown;
   });
-  buttonClicked.addEventListener('click', generateResults);
 }
 
