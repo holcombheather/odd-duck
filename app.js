@@ -8,7 +8,7 @@ function Product(name, imagePath) {
 }
 
 // Array of product objects
-let products = [
+let state = [
   new Product('bag', 'img/bag.jpg'),
   new Product('banana', 'img/banana.jpg'),
   new Product('bathroom', 'img/bathroom.jpg'),
@@ -32,15 +32,15 @@ let products = [
 
 // Function to generate three unique product images
 function generateImages() {
-  let product1 = products[Math.floor(Math.random() * products.length)];
-  let product2 = products[Math.floor(Math.random() * products.length)];
-  let product3 = products[Math.floor(Math.random() * products.length)];
+  let product1 = state[Math.floor(Math.random() * state.length)];
+  let product2 = state[Math.floor(Math.random() * state.length)];
+  let product3 = state[Math.floor(Math.random() * state.length)];
 
   // Check if products are unique and generate new ones if necessary
   while (product1 === product2 || product1 === product3 || product2 === product3) {
-    product1 = products[Math.floor(Math.random() * products.length)];
-    product2 = products[Math.floor(Math.random() * products.length)];
-    product3 = products[Math.floor(Math.random() * products.length)];
+    product1 = state[Math.floor(Math.random() * state.length)];
+    product2 = state[Math.floor(Math.random() * state.length)];
+    product3 = state[Math.floor(Math.random() * state.length)];
   }
 
   // Update timesShown property for each product
