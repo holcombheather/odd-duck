@@ -103,15 +103,62 @@ function handleImageClick(event) {
 
 voteTrackerEl.addEventListener('click', handleImageClick);
 
-
 function generateResults(event) {
-  // eslint-disable-next-line no-unused-vars
-  let buttonClicked = event.target.id;
-  state.forEach(product => {
-    let listItemEl = document.createElement('li');
-    let resultContainer = document.getElementById('results-list');
-    resultContainer.appendChild(listItemEl);
-    listItemEl.innerHTML = `${product.name} had ${product.timesClicked} votes, and was seen ${product.timesShown} times.`;
+  // Show the chart section
+  document.getElementById('chart-section').style.display = 'block';
+
+  // Prepare chart data
+  const productLabels = state.map(product => product.name);
+  const votesData = state.map(product => product.timesClicked);
+  const viewsData = state.map(product => product.timesShown);
+
+  // Get canvas context
+  const ctx = document.getElementById('results-chart').getContext('2d');
+
+  // Create the bar chart
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: productLabels,
+      datasets: [
+        {
+          label: 'Votes',
+          data: votesData,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'Views',
+          data: viewsData,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
   });
 }
+
+
+
+
+
+// function generateResults(event) {
+//   // eslint-disable-next-line no-unused-vars
+//   let buttonClicked = event.target.id;
+//   state.forEach(product => {
+//     let listItemEl = document.createElement('li');
+//     let resultContainer = document.getElementById('results-list');
+//     resultContainer.appendChild(listItemEl);
+//     listItemEl.innerHTML = `${product.name} had ${product.timesClicked} votes, and was seen ${product.timesShown} times.`;
+//   });
+// }
 
