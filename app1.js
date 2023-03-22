@@ -1,11 +1,9 @@
-// global variables
 const state = []; //why do we call it state? 
 let roundsOfVoting = 25;
 
 // let currentRound = 0;
 // let activeProducts = [];
 
-// constructor function to create product objects
 function Product(name, source) {
   this.name = name;
   this.source = source;
@@ -13,7 +11,7 @@ function Product(name, source) {
   this.timesShown = 0;
 }
 
-state.push( new Product('bag', 'img/bag.jpg'));
+state.push(new Product('bag', 'img/bag.jpg'));
 state.push(new Product('banana', 'img/banana.jpg'));
 state.push(new Product('bathroom', 'img/bathroom.jpg'));
 state.push(new Product('boots', 'img/boots.jpg'));
@@ -44,7 +42,7 @@ console.log('Current State', state);
 
 //verify our images render
 // imgEls[0].src = state[0].source;
-
+generateImages();
 
 // Function to randomly generate three unique product images
 function generateRandom() {
@@ -73,63 +71,61 @@ function generateImages() {
   imgEls[2].src = product3.source;
   imgEls[2].id = product3.name;
   product3.timesShown += 1;
-
-  // Update timesShown property for each product
-  product1.timesShown++;
-  product2.timesShown++;
-  product3.timesShown++;
-  let activeProducts = [product1, product2, product3];
-
-  // Display images on the page
-  document.getElementById('product1').src = product1.imagePath;
-  document.getElementById('product2').src = product2.imagePath;
-  document.getElementById('product3').src = product3.imagePath;
 }
-
-
-// Add event listener to image container
-// document.getElementById('image-container').addEventListener('click', handleImageClick);
-// document.getElementById('image-container').addEventListener('click', function(event) {
-//   if (event.target.classList.contains('product-image')) {
-//     generateImages();
-//   }
-// });
-
-
-// Initial image generation
-generateImages();
-
-// Number of voting rounds
-
-
-// Array of products currently being considered
-
 
 function handleImageClick(event) {
-  if (event.target.classList.contains('product-image')) {
-    // Find the clicked product and update its timesClicked property
-    let clickedProduct = state.find(function(product) {
-      return product.imagePath === event.target.src;
-    });
-    clickedProduct.timesClicked++;
+  console.log(event.target);
+
+  let clickedProduct = event.target.id;
+  state.forEach(image => {
+    if (image.name === clickedProduct) {
+      image.timesClicked += 1;
+    }
+  });
+  console.log('Updated State', state);
+
+  if (roundsOfVoting) {
+    generateImages();
+    roundsOfVoting--;
+  } else {
+    voteTrackerEl.removeEventListener('click', handleImageClick);
   }
 }
 
+voteTrackerEl.addEventListener('click', handleImageClick);
 
 
-document.getElementById('image-container').addEventListener('click', function(event) {
-  if (event.target.classList.contains('product-image') && currentRound < numRounds) {
-    handleImageClick(event);
-    generateImages();
-    currentRound++;
 
-    if (currentRound === numRounds) {
-      // Voting has ended, you can perform any post-voting actions here.
-      // For example, remove the event listener or display a message.
-      console.log("You have exceeded the number of votes allowed.");
-    }
-  }
-});
+
+
+// generateImages();
+
+
+// function handleImageClick(event) {
+//   if (event.target.classList.contains('product-image')) {
+//     // Find the clicked product and update its timesClicked property
+//     let clickedProduct = state.find(function(product) {
+//       return product.imagePath === event.target.src;
+//     });
+//     clickedProduct.timesClicked++;
+//   }
+// }
+
+
+
+// document.getElementById('image-container').addEventListener('click', function(event) {
+//   if (event.target.classList.contains('product-image') && currentRound < numRounds) {
+//     handleImageClick(event);
+//     generateImages();
+//     currentRound++;
+
+//     if (currentRound === numRounds) {
+//       // Voting has ended, you can perform any post-voting actions here.
+//       // For example, remove the event listener or display a message.
+//       console.log("You have exceeded the number of votes allowed.");
+//     }
+//   }
+// });
 
 
 

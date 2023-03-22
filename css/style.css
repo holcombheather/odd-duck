@@ -1,4 +1,4 @@
-.product-image {
+/* .product-image {
 	width: 30%;
 	height: 250px;
 	margin: 10px;
@@ -13,12 +13,22 @@
 	flex-wrap: wrap; 
 	max-width: 1000px; 
 	margin: 0 auto; 
+} */
+h1 {
+	text-align: center;
 }
 
-#results-container {
-	max-width: 1000px; 
-	margin: 20px auto; 
-    padding: 20px auto;
+#vote-tracker {
+	border: thin solid red;
+	display: grid;
+	width: 400px;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 200px;
+}
+
+img {
+	height: 100%;
+	margin: 0 20px;
 }
 
 button {
