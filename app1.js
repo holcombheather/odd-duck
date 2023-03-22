@@ -1,4 +1,4 @@
-const state = []; //why do we call it state? 
+const state = []; //why do we call it state?
 let roundsOfVoting = 25;
 const activeButton = document.getElementById('viewResultsButton');
 
@@ -90,8 +90,8 @@ function handleImageClick(event) {
     console.log('This is the button', buttonEl);
     buttonEl.addEventListener('click', generateResults);
     alert('You have reached the max number of votes');
-    activeButton.style.backgroundColor = "green";
-    activeButton.style.cursor = "pointer";
+    activeButton.style.backgroundColor = 'green';
+    activeButton.style.cursor = 'pointer';
   }
 }
 
