@@ -1,35 +1,65 @@
-const state = []; //why do we call it state?
-let roundsOfVoting = 25;
-const activeButton = document.getElementById('viewResultsButton');
+let storedState = localStorage.getItem('productState'); // Load stored state by retrieving the value of the 'prodcutState' key from local storage
+let state; //define state
 
-let previousProducts = [];
-
-function Product(name, source) {
-  this.name = name;
-  this.source = source;
-  this.timesClicked = 0;
-  this.timesShown = 0;
+if (storedState) {
+  state = JSON.parse(storedState).map( // Check if previous product array data is stored & if so parse the products array from local storage to set storedState as current state and map the array into a new array using the object constructor
+    (product) => new Product(product.name, product.source, product.timesClicked, product.timesShown)
+  );
+} else { // else create the proudct array using the object constructor with default values and set as current state
+  state = [
+    new Product('bag', 'img/bag.jpg'),
+    new Product('banana', 'img/banana.jpg'),
+    new Product('bathroom', 'img/bathroom.jpg'),
+    new Product('boots', 'img/boots.jpg'),
+    new Product('breakfast', 'img/breakfast.jpg'),
+    new Product('bubblegum', 'img/bubblegum.jpg'),
+    new Product('chair', 'img/chair.jpg'),
+    new Product('cthulhu', 'img/cthulhu.jpg'),
+    new Product('dog-duck', 'img/dog-duck.jpg'),
+    new Product('dragon', 'img/dragon.jpg'),
+    new Product('pen', 'img/pen.jpg'),
+    new Product('pet-sweep', 'img/pet-sweep.jpg'),
+    new Product('scissors', 'img/scissors.jpg'),
+    new Product('shark', 'img/shark.jpg'),
+    new Product('sweep', 'img/sweep.png'),
+    new Product('tauntaun', 'img/tauntaun.jpg'),
+    new Product('unicorn', 'img/unicorn.jpg'),
+    new Product('water-can', 'img/water-can.jpg'),
+    new Product('wine-glass', 'img/wine-glass.jpg'),
+  ];
 }
 
-state.push(new Product('bag', 'img/bag.jpg'));
-state.push(new Product('banana', 'img/banana.jpg'));
-state.push(new Product('bathroom', 'img/bathroom.jpg'));
-state.push(new Product('boots', 'img/boots.jpg'));
-state.push(new Product('breakfast', 'img/breakfast.jpg'));
-state.push(new Product('bubblegum', 'img/bubblegum.jpg'));
-state.push(new Product('chair', 'img/chair.jpg'));
-state.push(new Product('cthulhu', 'img/cthulhu.jpg'));
-state.push(new Product('dog-duck', 'img/dog-duck.jpg'));
-state.push(new Product('dragon', 'img/dragon.jpg'));
-state.push(new Product('pen', 'img/pen.jpg'));
-state.push(new Product('pet-sweep', 'img/pet-sweep.jpg'));
-state.push(new Product('scissors', 'img/scissors.jpg'));
-state.push(new Product('shark', 'img/shark.jpg'));
-state.push(new Product('sweep', 'img/sweep.png'));
-state.push(new Product('tauntaun', 'img/tauntaun.jpg'));
-state.push(new Product('unicorn', 'img/unicorn.jpg'));
-state.push(new Product('water-can', 'img/water-can.jpg'));
-state.push(new Product('wine-glass', 'img/wine-glass.jpg'));
+
+let roundsOfVoting = 25;
+const activeButton = document.getElementById('viewResultsButton');
+let previousProducts = [];
+
+function Product(name, source, timesClicked = 0, timesShown = 0) {
+  this.name = name;
+  this.source = source;
+  this.timesClicked = timesClicked;
+  this.timesShown = timesShown;
+}
+
+// state.push(new Product('bag', 'img/bag.jpg'));
+// state.push(new Product('banana', 'img/banana.jpg'));
+// state.push(new Product('bathroom', 'img/bathroom.jpg'));
+// state.push(new Product('boots', 'img/boots.jpg'));
+// state.push(new Product('breakfast', 'img/breakfast.jpg'));
+// state.push(new Product('bubblegum', 'img/bubblegum.jpg'));
+// state.push(new Product('chair', 'img/chair.jpg'));
+// state.push(new Product('cthulhu', 'img/cthulhu.jpg'));
+// state.push(new Product('dog-duck', 'img/dog-duck.jpg'));
+// state.push(new Product('dragon', 'img/dragon.jpg'));
+// state.push(new Product('pen', 'img/pen.jpg'));
+// state.push(new Product('pet-sweep', 'img/pet-sweep.jpg'));
+// state.push(new Product('scissors', 'img/scissors.jpg'));
+// state.push(new Product('shark', 'img/shark.jpg'));
+// state.push(new Product('sweep', 'img/sweep.png'));
+// state.push(new Product('tauntaun', 'img/tauntaun.jpg'));
+// state.push(new Product('unicorn', 'img/unicorn.jpg'));
+// state.push(new Product('water-can', 'img/water-can.jpg'));
+// state.push(new Product('wine-glass', 'img/wine-glass.jpg'));
 
 
 let imgEls = document.querySelectorAll('img');
@@ -86,6 +116,7 @@ function handleImageClick(event) {
     }
   });
   console.log('Updated State', state);
+  localStorage.setItem('productState', JSON.stringify(state)); //Save updated state to Local Storage
 
   if (roundsOfVoting) {
     generateImages();
@@ -147,18 +178,5 @@ function generateResults(event) {
   });
 }
 
-
-
-
-
-// function generateResults(event) {
-//   // eslint-disable-next-line no-unused-vars
-//   let buttonClicked = event.target.id;
-//   state.forEach(product => {
-//     let listItemEl = document.createElement('li');
-//     let resultContainer = document.getElementById('results-list');
-//     resultContainer.appendChild(listItemEl);
-//     listItemEl.innerHTML = `${product.name} had ${product.timesClicked} votes, and was seen ${product.timesShown} times.`;
-//   });
-// }
-
+console.log('Current state at the end with state: ', state);
+console.log('Current state at the end with localStorage: ', localStorage);
