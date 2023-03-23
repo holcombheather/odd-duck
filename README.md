@@ -25,6 +25,14 @@ Lab 12
 - Map for name array: https://www.digitalocean.com/community/tutorials/understanding-map-and-set-objects-in-javascript 
 - Data structures: https://www.chartjs.org/docs/latest/general/data-structures.html
 
+Lab 13 
+- Class Demo
+- http://diveinto.html5doctor.com/storage.html
+- https://www.smashingmagazine.com/2010/10/local-storage-and-how-to-use-it/ 
+- https://plainenglish.io/blog/everything-you-need-to-know-about-html5-local-storage-and-session-storage-479c63415c0a
+- Using conditional ternary operator in Javascript (for if else statement for checking product array): https://www.freecodecamp.org/news/javascript-if-else-and-if-then-js-conditional-statements/ 
+- JSON.parse(): https://www.w3schools.com/jsref/jsref_parse_json.asp 
+
 ### Lighthouse Accessiblity Report: 
 
 Report for Lab 11:

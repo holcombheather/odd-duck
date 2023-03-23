@@ -70,3 +70,37 @@ let eventId = voteTrackerEl.addEventListener('click', function(event) {
         voteTrackerEl.removeEventListener('click', eventId);
     }
 });
+
+
+
+
+
+
+
+
+
+/// demo code for Class 13
+
+// Store products array into local storage
+localStorage.setItem('Product', JSON.stringify(state));
+console.log('Current state after set: ', localStorage);
+
+let productState = localStorage.getItem('Product');
+console.log('State from storage: ', JSON.parse(productState));
+
+function writeData(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+function readData(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+// Retrieve products array from local storage
+
+state = readData('Product');
+console.log('Fresh data from local storage', state.Product[0]);
+
+state.Product[0] = new Product('Scrunchie', 'img/accessibility');
+
+writeData('Product', state); 
